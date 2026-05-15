@@ -135,6 +135,10 @@
 <a href="/admin/users" class="block py-2.5 px-4 hover:bg-green-700 transition">
     <i class="fas fa-user-shield mr-2 w-5"></i> Admin Users
 </a>
+
+<a href="/admin/partnerships" class="block py-2.5 px-4 hover:bg-green-700 transition">
+    <i class="fas fa-handshake mr-2 w-5"></i> Partnerships
+</a>
                     <form method="POST" action="/logout" class="block">
                         @csrf
                         <button type="submit" class="w-full text-left block py-2.5 px-4 hover:bg-green-700 transition">

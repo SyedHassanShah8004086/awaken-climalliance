@@ -12,17 +12,12 @@ use App\Models\Partner;
 use App\Models\Donation;
 use App\Models\TeamMember;
 use App\Models\Volunteer;
-use Illuminate\Http\Request;
+use App\Models\PartnershipRequest;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        // Admin check
-        if (!auth()->user()->is_admin) {
-            abort(403, 'Unauthorized access. Admin only.');
-        }
-        
         $totalPosts = Post::count();
         $totalProjects = Project::count();
         $totalEvents = Event::count();
@@ -33,12 +28,13 @@ class DashboardController extends Controller
         $totalDonationAmount = Donation::sum('amount');
         $totalTeamMembers = TeamMember::where('is_active', true)->count();
         $totalVolunteers = Volunteer::count();
-        
+        $totalPartnerships = PartnershipRequest::count();  // Add this line
+
         return view('admin.dashboard', compact(
             'totalPosts', 'totalProjects', 'totalEvents', 
             'totalContacts', 'totalSubscribers', 'totalPartners',
             'totalDonations', 'totalDonationAmount', 'totalTeamMembers',
-            'totalVolunteers'
+            'totalVolunteers', 'totalPartnerships'  // Add this
         ));
     }
 }

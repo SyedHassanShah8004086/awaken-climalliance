@@ -124,6 +124,22 @@
         </a>
     </div>
 
+<!-- Partnerships Card -->
+<div class="stat-card bg-white rounded-xl shadow-md p-4 md:p-6 hover:shadow-lg transition">
+    <div class="flex items-center justify-between mb-3 md:mb-4">
+        <div class="bg-teal-100 p-2 md:p-3 rounded-full">
+            <i class="fas fa-handshake text-teal-600 text-lg md:text-xl"></i>
+        </div>
+        <span class="text-2xl md:text-3xl font-bold text-teal-600">{{ $totalPartnerships ?? 0 }}</span>
+    </div>
+    <h3 class="text-gray-700 font-semibold text-sm md:text-lg mb-1">Partnership Requests</h3>
+    <p class="text-gray-400 text-xs md:text-sm mb-2 md:mb-3">Pending partnership requests</p>
+    <a href="/admin/partnerships" class="inline-flex items-center text-teal-600 hover:text-teal-800 text-xs md:text-sm font-medium">
+        View Requests <i class="fas fa-arrow-right ml-1"></i>
+    </a>
+</div>
+
+
    <!-- Volunteers Card -->
 <div class="stat-card bg-white rounded-xl shadow-md p-4 md:p-6 hover:shadow-lg transition">
     <div class="flex items-center justify-between mb-3 md:mb-4">

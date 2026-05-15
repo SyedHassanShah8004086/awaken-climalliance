@@ -13,6 +13,7 @@ use App\Models\Donation;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\PartnershipRequest;
 
 class HomeController extends Controller
 {
@@ -186,15 +187,23 @@ class HomeController extends Controller
         return redirect()->route('join')->with('success', 'Thank you for your application! We will contact you soon.');
     }
 
-    public function submitPartner(Request $request)
-    {
-        $request->validate([
-            'organization' => 'required|max:255',
-            'contact_person' => 'required|max:255',
-            'email' => 'required|email',
-        ]);
+   public function submitPartner(Request $request)
+{
+    $request->validate([
+        'organization' => 'required|max:255',
+        'contact_person' => 'required|max:255',
+        'email' => 'required|email',
+    ]);
 
-        // You can save to database or send email here
-        return redirect()->route('partner')->with('success', 'Thank you for your partnership request! We will contact you soon.');
-    }
+    \App\Models\PartnershipRequest::create([
+        'organization' => $request->organization,
+        'contact_person' => $request->contact_person,
+        'email' => $request->email,
+        'phone' => $request->phone,
+        'message' => $request->message,
+        'status' => 'pending',
+    ]);
+
+    return redirect()->route('partner')->with('success', 'Thank you for your partnership request! We will contact you soon.');
+}
 }

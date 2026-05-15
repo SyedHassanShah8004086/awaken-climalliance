@@ -103,7 +103,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/users', [App\Http\Controllers\Admin\AdminUserController::class, 'index'])->name('admin.users');
     Route::put('/users/{user}/make-admin', [App\Http\Controllers\Admin\AdminUserController::class, 'makeAdmin'])->name('admin.users.make');
     Route::put('/users/{user}/remove-admin', [App\Http\Controllers\Admin\AdminUserController::class, 'removeAdmin'])->name('admin.users.remove');
-});
+
+        // Partnership Requests Management
+    Route::get('/partnerships', [App\Http\Controllers\Admin\PartnershipController::class, 'index'])->name('admin.partnerships');
+    Route::get('/partnerships/{partnership}', [App\Http\Controllers\Admin\PartnershipController::class, 'show'])->name('admin.partnerships.show');
+    Route::put('/partnerships/{partnership}', [App\Http\Controllers\Admin\PartnershipController::class, 'update'])->name('admin.partnerships.update');
+    Route::delete('/partnerships/{partnership}', [App\Http\Controllers\Admin\PartnershipController::class, 'destroy'])->name('admin.partnerships.destroy');
+
+    });
 
 // ========== VOLUNTEERS MANAGEMENT (Protected) ==========
 Route::middleware(['auth'])->group(function () {
