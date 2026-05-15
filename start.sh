@@ -1,4 +1,7 @@
 #!/bin/bash
 
-# Start Laravel server only (skip migrations since tables exist)
+# Wait a bit for the database
+sleep 5
+
+# Start Laravel server
 php artisan serve --host=0.0.0.0 --port=$PORT
