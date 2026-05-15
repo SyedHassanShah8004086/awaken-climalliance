@@ -1,10 +1,16 @@
 #!/bin/bash
 
+# Show current directory
+echo "Current directory: $(pwd)"
+
 # Create database directory
-mkdir -p /app/database
+mkdir -p database
 
 # Create SQLite database file
-touch /app/database/database.sqlite
+touch database/database.sqlite
+
+# Verify database exists
+ls -la database/
 
 # Create storage directories
 mkdir -p storage/framework/sessions
@@ -15,8 +21,8 @@ mkdir -p bootstrap/cache
 # Set permissions
 chmod -R 775 storage
 chmod -R 775 bootstrap/cache
-chmod 777 /app/database
-chmod 777 /app/database/database.sqlite
+chmod 777 database
+chmod 777 database/database.sqlite
 
 # Run migrations
 php artisan migrate --force
