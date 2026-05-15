@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Set environment
-export PORT=${PORT:-8000}
-
 # Run migrations
 php artisan migrate --force
 
